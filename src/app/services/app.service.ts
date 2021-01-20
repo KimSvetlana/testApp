@@ -15,4 +15,15 @@ export class AppService {
   getPersonArr() : Person[] {
     return personsArr;
   }
+
+  /**
+   * Получение подробной информации о сотруднике
+   */
+  getPersonInfo(id: number) : Person {
+    return {
+        id: 2,
+        firstName: 'Dmitriy',
+        lastName: 'Dmitriev'
+      };
+  }
 }

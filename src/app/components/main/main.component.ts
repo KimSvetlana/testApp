@@ -7,14 +7,13 @@ import { AppService } from 'src/app/services/app.service';
   template: `
   <div class = 'wrapper'>
     <table>
-      <thead>
         <tr class = 'head'>
           <td><td>
           <td>Имя<td>
           <td>Фамилия<td>
           <td><td>
         </tr>
-      </thead>
+    
       <tbody>
         <tr *ngFor="let person of persons" class='' id = {{person.id}}>
           <td><mat-icon>account_circle</mat-icon><td>
@@ -22,7 +21,7 @@ import { AppService } from 'src/app/services/app.service';
           <td>{{person.lastName}}<td>
           <td>
             <div>
-              <a href = '/redactPerson/id'><mat-icon>create</mat-icon></a>
+              <a href = '/redactPerson/{{person.id}}'><mat-icon>create</mat-icon></a>
               <mat-icon>clear</mat-icon>
             </div>
           <td>
