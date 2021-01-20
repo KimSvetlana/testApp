@@ -1,0 +1,28 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 20px;
+}
+table{
+    // width: 1200px;
+    // margin: 0 auto;
+    border-collapse: collapse;
+}
+tr.head{
+    background-color: #e2dede;
+    font-weight: 500;
+    height: 30px;
+}
+tr {
+    height: 30px;
+}
+.button{
+    margin-top: 10px;
+    box-sizing: border-box;
+    padding: 5px;
+    width :160px;
+    background-color: cornflowerblue;
+    border: none;
+    border-radius: 5px;
+}
