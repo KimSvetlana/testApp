@@ -16,13 +16,16 @@ import { AppService } from 'src/app/services/app.service';
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let person of persons" class=''>
-          <td>i<td>
+        <tr *ngFor="let person of persons" class='' id = {{person.id}}>
+          <td><mat-icon>account_circle</mat-icon><td>
           <td>{{person.firstName}}<td>
           <td>{{person.lastName}}<td>
-          <td><div>
-            
-          </div><td>
+          <td>
+            <div>
+              <a href = '/redactPerson/id'><mat-icon>create</mat-icon></a>
+              <mat-icon>clear</mat-icon>
+            </div>
+          <td>
         </tr>
       </tbody>
     </table>

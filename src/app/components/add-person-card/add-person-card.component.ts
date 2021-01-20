@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-add-person-card',
   template:`
-<div class = 'addCard'>
+<div class = 'card'>
   <h3>Создание сотрудника</h3>
   <a href = '/'>Назад к списку</a>
   <input placeholder ='Введите имя сотрудника'>
