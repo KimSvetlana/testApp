@@ -21,10 +21,11 @@ import { AppService } from 'src/app/services/app.service';
           <td>{{person.lastName}}</td>
           <td>
             <div>
-              <a href = '/redactPerson/{{person.id}}'><mat-icon>create</mat-icon></a>
-              <mat-icon>clear</mat-icon>
+              <mat-icon (click)="visibility.onMouseClick()" class="icon-button">create</mat-icon>
+              <mat-icon  class="icon-button">clear</mat-icon>
             </div>
           </td>
+          <app-redact-person-card #visibility [id] = "person.id"></app-redact-person-card>
         </tr>
       </tbody>
     </table>
@@ -34,7 +35,6 @@ import { AppService } from 'src/app/services/app.service';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-
   persons: Person[] = [];
   constructor(private appService: AppService){}
 

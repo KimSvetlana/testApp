@@ -1,12 +1,11 @@
 .wrapper{
+    position: relative;
     display: flex;
     flex-direction: column;
     min-height: 100%;
     padding: 20px;
 }
 table{
-    // width: 1200px;
-    // margin: 0 auto;
     border-collapse: collapse;
 }
 tr.head{
@@ -25,4 +24,7 @@ tr {
     background-color: cornflowerblue;
     border: none;
     border-radius: 5px;
+}
+.icon-button{
+    cursor: pointer;
 }

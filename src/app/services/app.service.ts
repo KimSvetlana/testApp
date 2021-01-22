@@ -20,11 +20,7 @@ export class AppService {
   /**
    * Получение подробной информации о сотруднике
    */
-  getPersonInfo(id: number): Person {
-    return {
-        id: 2,
-        firstName: 'Dmitriy',
-        lastName: 'Dmitriev'
-      };
+  getPersonInfo(id: number): Observable<Person> {
+    return  this.apiService.get<Person>(`person/${id}`);
   }
 }
