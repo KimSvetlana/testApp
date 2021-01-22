@@ -8,28 +8,28 @@ import { AppService } from 'src/app/services/app.service';
   <div class = 'wrapper'>
     <table>
         <tr class = 'head'>
-          <td><td>
-          <td>Имя<td>
-          <td>Фамилия<td>
-          <td><td>
+          <td></td>
+          <td>Имя</td>
+          <td>Фамилия</td>
+          <td></td>
         </tr>
-    
+
       <tbody>
         <tr *ngFor="let person of persons" class='' id = {{person.id}}>
-          <td><mat-icon>account_circle</mat-icon><td>
-          <td>{{person.firstName}}<td>
-          <td>{{person.lastName}}<td>
+          <td><mat-icon>account_circle</mat-icon></td>
+          <td>{{person.firstName}}</td>
+          <td>{{person.lastName}}</td>
           <td>
             <div>
               <a href = '/redactPerson/{{person.id}}'><mat-icon>create</mat-icon></a>
               <mat-icon>clear</mat-icon>
             </div>
-          <td>
+          </td>
         </tr>
       </tbody>
     </table>
     <a routerLink="/addPerson" class='button'> Добавить сотрудника</a>
-</div>  
+</div>
   `,
   styleUrls: ['./main.component.scss']
 })
@@ -37,8 +37,10 @@ export class MainComponent implements OnInit {
 
   persons: Person[] = [];
   constructor(private appService: AppService){}
-  
+
   ngOnInit(): void {
-    this.persons = this.appService.getPersonArr();
+    this.appService.getPersonArr().subscribe((personsArr :Person[] ) => {
+      this.persons = personsArr;
+    })
   }
 }

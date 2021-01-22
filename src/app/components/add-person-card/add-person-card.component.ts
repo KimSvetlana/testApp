@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-add-person-card',
-  template:`
+  template: `
 <div class = 'card'>
   <h3>Создание сотрудника</h3>
   <a href = '/'>Назад к списку</a>
   <input placeholder ='Введите имя сотрудника'>
   <input  placeholder ='Введите фамилию сотрудника'>
-  <button>Сохранить</button>  
+  <button>Сохранить</button>
 </div>
   ` ,
   styleUrls: ['./add-person-card.component.scss']

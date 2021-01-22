@@ -11,25 +11,25 @@ import { AppService } from 'src/app/services/app.service';
   <a href = '/'>Назад к списку</a>
   <input value = {{this.person.firstName}}>
   <input  value = {{this.person.lastName}}>
-  <button>Сохранить</button>  
+  <button>Сохранить</button>
 </div>`,
   styleUrls: ['./redact-person-card.component.scss']
 })
 export class RedactPersonCardComponent implements OnInit {
-  person : Person ;
+  person: Person ;
 
   constructor(private appService: AppService,  private route: ActivatedRoute) {
-    this.getPerson(this.route.snapshot.params.id)
+    this.getPerson(this.route.snapshot.params.id);
    }
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.params.id)
+    console.log(this.route.snapshot.params.id);
    }
 
   /**
    * Получить информацию о сотруднике по id
    */
   private getPerson(id: number): void {
-    this.person = this.appService.getPersonInfo(id)  
+    this.person = this.appService.getPersonInfo(id);
   }
 }
