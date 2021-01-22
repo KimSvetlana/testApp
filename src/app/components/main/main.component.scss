@@ -16,7 +16,8 @@ tr.head{
 tr {
     height: 30px;
 }
-.button{
+button{
+    cursor: pointer;
     margin-top: 10px;
     box-sizing: border-box;
     padding: 5px;

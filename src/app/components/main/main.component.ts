@@ -29,7 +29,8 @@ import { AppService } from 'src/app/services/app.service';
         </tr>
       </tbody>
     </table>
-    <a routerLink="/addPerson" class='button'> Добавить сотрудника</a>
+    <button class='button' (click)="display.onClick()"> Добавить сотрудника</button>
+    <app-add-person-card  #display></app-add-person-card>
 </div>
   `,
   styleUrls: ['./main.component.scss']
@@ -39,8 +40,8 @@ export class MainComponent implements OnInit {
   constructor(private appService: AppService){}
 
   ngOnInit(): void {
-    this.appService.getPersonArr().subscribe((personsArr :Person[] ) => {
+    this.appService.getPersonArr().subscribe((personsArr: Person[] ) => {
       this.persons = personsArr;
-    })
+    });
   }
 }

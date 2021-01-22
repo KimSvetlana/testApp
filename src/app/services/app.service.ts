@@ -16,7 +16,7 @@ export class AppService {
   getPersonArr(): Observable<Person[]> {
     return this.apiService.get<Person[]>(`person`);
   }
- 
+
   /**
    * Получение подробной информации о сотруднике
    */

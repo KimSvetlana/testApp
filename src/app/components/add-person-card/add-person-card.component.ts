@@ -1,23 +1,32 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from 'src/app/services/app.service';
 
 @Component({
   selector: 'app-add-person-card',
   template: `
-<div class = 'card'>
+<div class = "substrate" [style.display]="display?'block':'none'"></div>
+<div class = 'card' [style.display]="display?'block':'none'">
   <h3>Создание сотрудника</h3>
-  <a href = '/'>Назад к списку</a>
-  <input placeholder ='Введите имя сотрудника'>
-  <input  placeholder ='Введите фамилию сотрудника'>
-  <button>Сохранить</button>
+  <a href = '#' (click)="onMouseClick()">Назад к списку</a>
+<form method = 'post' action = 'http://localhost:3000/person'>
+  <input type = 'text' name = 'firstName' placeholder ='Введите имя сотрудника'>
+  <input  type = 'text' name = 'lastName' placeholder ='Введите фамилию сотрудника'>
+  <input value="Сохранить" type='submit'>
+</form>
 </div>
   ` ,
   styleUrls: ['./add-person-card.component.scss']
 })
-export class AddPersonCardComponent implements OnInit {
+export class AddPersonCardComponent{
+  display = false;
 
-  constructor() { }
+  constructor(private appService: AppService) { }
 
-  ngOnInit(): void {
+  onClick(): void{
+    this.display = true;
   }
 
+  onMouseClick(): void{
+    this.display = false;
+  }
 }
