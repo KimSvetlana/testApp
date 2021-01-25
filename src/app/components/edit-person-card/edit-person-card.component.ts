@@ -3,16 +3,16 @@ import { Person } from 'src/app/interfaces/person';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
-  selector: 'app-redact-person-card',
+  selector: 'app-edit-person-card',
   template: `
-  <div class = "substrate" [style.display]="visibility?'block':'none'"></div>
+  <div class = "card-shadow" [style.display]="visibility?'block':'none'"></div>
     <div class = 'card' [style.display]="visibility?'block':'none'">
       <h3>Редактирование сотрудника</h3>
       <a href="#" (click)="onClick()"> Назад к списку</a>
     <form (ngSubmit)="onSubmit($event)">
       <input type = 'text' name = 'firstName' [(ngModel)]="firstName" value = {{this.person?.firstName}}>
       <input  type = 'text' name = 'lastName' [(ngModel)]="lastName" value = {{this.person?.lastName}}>
-      <button value="Сохранить"  type= 'submit'>Сохранить</button>
+      <button value="Сохранить"  type='submit'>Сохранить</button>
     </form>
     </div>`,
   styleUrls: ['./edit-person-card.component.scss']
@@ -55,18 +55,17 @@ export class EditPersonCardComponent implements OnInit {
   }
 
   /**
-   * Редактировать информацию о сотруднике, отправить запрос на сервер 
+   * Редактировать информацию о сотруднике, отправить запрос на сервер
    */
   onSubmit(event: any): void {
     const obj = {
-      "firstName": event.target.firstName.value,
-      "lastName": event.target.lastName.value,
+      firstName: event.target.firstName.value,
+      lastName: event.target.lastName.value,
     };
-    console.log(obj);
     this.appService.putPersonInfo(this.id, obj).subscribe((person: Person ) => {
       this.personChanged.emit(person);
     });
 
-    this.visibility = false;  
+    this.visibility = false;
   }
 }

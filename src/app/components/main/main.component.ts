@@ -22,11 +22,12 @@ import { AppService } from 'src/app/services/app.service';
           <td>
             <div>
               <mat-icon (click)="visibility.onClickEdit()" class="icon-button">create</mat-icon>
-              <mat-icon  class="icon-button" (click)="onClickDelete(person.id)" >clear</mat-icon>
+              <mat-icon  class="icon-button" (click)="showing.onClickDelete()" >clear</mat-icon>
             </div>
           </td>
-          <app-redact-person-card #visibility [id] = "person.id"
-          (personChanged)="onPersonChanged($event)"></app-redact-person-card>
+          <app-edit-person-card #visibility [id] = "person.id"
+          (personChanged)="onPersonChanged($event)"></app-edit-person-card>
+          <app-delete-person-card  #showing [id] = "person.id" (personDeleted)="onPersonDeleted($event)"></app-delete-person-card>
         </tr>
       </tbody>
     </table>
@@ -57,20 +58,25 @@ export class MainComponent implements OnInit {
   /**
    * Обработать изменение информации о сотруднике в таблице
    */
-  onPersonChanged(person: Person){
+  onPersonChanged(person: Person): void{
     this.persons.find(el => {
-      if(el.id === person.id){
+      if (el.id === person.id){
         el.firstName = person.firstName;
         el.lastName = person.lastName;
-      }      
-    })
+      }
+    });
   }
 
   /**
-   * Обработать удаление сотрудника из таблицы
+   * Обработать удаление информации о сотруднике в таблице
    */
-  onClickDelete(id: number) {
-    console.log(id)
-    this.appService.deletePersonInfo(id)
+  onPersonDeleted(id: number): void{
+    let i: number;
+    this.persons.find(el => {
+      if (el.id === id) {
+        i = this.persons.indexOf(el);
+      }
+    });
+    this.persons.splice(i, 1);
   }
 }

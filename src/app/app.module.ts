@@ -10,6 +10,7 @@ import { EditPersonCardComponent } from './components/edit-person-card/edit-pers
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { DeletePersonCardComponent } from './components/delete-person-card/delete-person-card.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     MainComponent,
     AddPersonCardComponent,
     EditPersonCardComponent,
+    DeletePersonCardComponent,
   ],
   imports: [
     BrowserModule,

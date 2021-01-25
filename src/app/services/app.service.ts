@@ -34,8 +34,7 @@ export class AppService {
   /**
    * Обновление информации о сотруднике
    */
-  putPersonInfo(id: number, obj:object): Observable<Person> {
-    console.log("request is " + `person/${id}` + " " + obj);
+  putPersonInfo(id: number, obj: object): Observable<Person> {
     return  this.apiService.put<Person>(`person/${id}/`, obj);
   }
 
@@ -43,6 +42,6 @@ export class AppService {
    * Удаление информации о сотруднике
    */
   deletePersonInfo(id: number): Observable<Person> {
-    return  this.apiService.delete<Person>(`person/${id}`);
+    return  this.apiService.delete<Person>(`person/${id}/`);
   }
 }

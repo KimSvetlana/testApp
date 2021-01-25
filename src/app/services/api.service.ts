@@ -37,7 +37,7 @@ export class ApiService {
     return this.http.put<T>(
       `${environment.baseUrl}${path}`,
       JSON.stringify(body),
-      {headers: headers}
+      {headers}
     ).pipe(catchError((err) => {
       this.formatErrors(err);
       return throwError(err);
@@ -64,8 +64,10 @@ export class ApiService {
    * @param path путь запроса
    */
   public delete<T>(path: string): Observable<T> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     return this.http.delete<T>(
-      `${environment.baseUrl}${path}`
+      `${environment.baseUrl}${path}`,
+      {headers}
     ).pipe(catchError((err) => {
       this.formatErrors(err);
       return throwError(err);

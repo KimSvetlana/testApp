@@ -5,7 +5,7 @@ import { AppService } from 'src/app/services/app.service';
 @Component({
   selector: 'app-add-person-card',
   template: `
-<div class = "substrate" [style.display]="display?'block':'none'"></div>
+<div class = "card-shadow" [style.display]="display?'block':'none'"></div>
 <div class = 'card' [style.display]="display?'block':'none'">
   <h3>Создание сотрудника</h3>
   <a href = '#' (click)="onMouseClick()">Назад к списку</a>
