@@ -9,6 +9,7 @@ import { AddPersonCardComponent } from './components/add-person-card/add-person-
 import { RedactPersonCardComponent } from './components/redact-person-card/redact-person-card.component';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatIconModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

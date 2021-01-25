@@ -30,7 +30,7 @@ import { AppService } from 'src/app/services/app.service';
       </tbody>
     </table>
     <button class='button' (click)="display.onClick()"> Добавить сотрудника</button>
-    <app-add-person-card  #display></app-add-person-card>
+    <app-add-person-card  #display (onChanged)="onChanged($event)"></app-add-person-card>
 </div>
   `,
   styleUrls: ['./main.component.scss']
@@ -43,5 +43,12 @@ export class MainComponent implements OnInit {
     this.appService.getPersonArr().subscribe((personsArr: Person[] ) => {
       this.persons = personsArr;
     });
+  }
+
+  /**
+   * Обработать изменение таблицы
+   */
+  onChanged(personInfo: Person): void{
+    this.persons.push(personInfo);
   }
 }

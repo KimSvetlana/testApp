@@ -23,4 +23,18 @@ export class AppService {
   getPersonInfo(id: number): Observable<Person> {
     return  this.apiService.get<Person>(`person/${id}`);
   }
+
+  /**
+   * Добавление информации о сотруднике
+   */
+  postPersonInfo(obj: object): Observable<Person> {
+    return  this.apiService.post<Person>(`person/`, obj);
+  }
+
+  /**
+   * Обновление информации о сотруднике
+   */
+  putPersonInfo(id: number, obj: Person): Observable<Person> {
+    return  this.apiService.put<Person>(`person/${id}`, obj);
+  }
 }
