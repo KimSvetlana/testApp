@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Person } from 'src/app/interfaces/person';
 import { AppService } from 'src/app/services/app.service';
 
@@ -9,14 +9,19 @@ import { AppService } from 'src/app/services/app.service';
     <div class = 'card' [style.display]="visibility?'block':'none'">
       <h3>Редактирование сотрудника</h3>
       <a href="#" (click)="onClick()"> Назад к списку</a>
-      <input value = {{this.person?.firstName}}>
-      <input  value = {{this.person?.lastName}}>
-      <button>Сохранить</button>
+    <form (ngSubmit)="onSubmit($event)">
+      <input type = 'text' name = 'firstName' [(ngModel)]="firstName" value = {{this.person?.firstName}}>
+      <input  type = 'text' name = 'lastName' [(ngModel)]="lastName" value = {{this.person?.lastName}}>
+      <button value="Сохранить"  type= 'submit'>Сохранить</button>
+    </form>
     </div>`,
-  styleUrls: ['./redact-person-card.component.scss']
+  styleUrls: ['./edit-person-card.component.scss']
 })
-export class RedactPersonCardComponent implements OnInit {
+export class EditPersonCardComponent implements OnInit {
+  @Output() personChanged = new EventEmitter<Person>();
   @Input() id: number;
+  firstName: string;
+  lastName: string;
   visibility = false;
   person: Person | null = null ;
 
@@ -25,7 +30,6 @@ export class RedactPersonCardComponent implements OnInit {
   ngOnInit(): void {
     this.getPerson(this.id);
   }
-
 
   /**
    * Получить информацию о сотруднике по id
@@ -39,7 +43,7 @@ export class RedactPersonCardComponent implements OnInit {
   /**
    * Обработать клик по кнопке редактирования
    */
-  onMouseClick(): void {
+  onClickEdit(): void {
     this.visibility = true;
   }
 
@@ -48,5 +52,21 @@ export class RedactPersonCardComponent implements OnInit {
    */
   onClick(): void {
     this.visibility = false;
+  }
+
+  /**
+   * Редактировать информацию о сотруднике, отправить запрос на сервер 
+   */
+  onSubmit(event: any): void {
+    const obj = {
+      "firstName": event.target.firstName.value,
+      "lastName": event.target.lastName.value,
+    };
+    console.log(obj);
+    this.appService.putPersonInfo(this.id, obj).subscribe((person: Person ) => {
+      this.personChanged.emit(person);
+    });
+
+    this.visibility = false;  
   }
 }

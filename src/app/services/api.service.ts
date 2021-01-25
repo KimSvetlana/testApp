@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -33,9 +33,11 @@ export class ApiService {
    * @param body тело запроса
    */
   public put<T>(path: string, body: object = {}): Observable<T> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     return this.http.put<T>(
       `${environment.baseUrl}${path}`,
-      JSON.stringify(body)
+      JSON.stringify(body),
+      {headers: headers}
     ).pipe(catchError((err) => {
       this.formatErrors(err);
       return throwError(err);

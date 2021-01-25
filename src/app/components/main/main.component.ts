@@ -21,22 +21,24 @@ import { AppService } from 'src/app/services/app.service';
           <td>{{person.lastName}}</td>
           <td>
             <div>
-              <mat-icon (click)="visibility.onMouseClick()" class="icon-button">create</mat-icon>
-              <mat-icon  class="icon-button">clear</mat-icon>
+              <mat-icon (click)="visibility.onClickEdit()" class="icon-button">create</mat-icon>
+              <mat-icon  class="icon-button" (click)="onClickDelete(person.id)" >clear</mat-icon>
             </div>
           </td>
-          <app-redact-person-card #visibility [id] = "person.id"></app-redact-person-card>
+          <app-redact-person-card #visibility [id] = "person.id"
+          (personChanged)="onPersonChanged($event)"></app-redact-person-card>
         </tr>
       </tbody>
     </table>
-    <button class='button' (click)="display.onClick()"> Добавить сотрудника</button>
-    <app-add-person-card  #display (onChanged)="onChanged($event)"></app-add-person-card>
+    <button class='button' (click)="display.onClickAdd()"> Добавить сотрудника</button>
+    <app-add-person-card  #display (personAdded)="onPersonAdded($event)"></app-add-person-card>
 </div>
   `,
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
   persons: Person[] = [];
+
   constructor(private appService: AppService){}
 
   ngOnInit(): void {
@@ -46,9 +48,29 @@ export class MainComponent implements OnInit {
   }
 
   /**
-   * Обработать изменение таблицы
+   * Обработать добавление в таблицу
    */
-  onChanged(personInfo: Person): void{
-    this.persons.push(personInfo);
+  onPersonAdded(person: Person): void{
+    this.persons.push(person);
+  }
+
+  /**
+   * Обработать изменение информации о сотруднике в таблице
+   */
+  onPersonChanged(person: Person){
+    this.persons.find(el => {
+      if(el.id === person.id){
+        el.firstName = person.firstName;
+        el.lastName = person.lastName;
+      }      
+    })
+  }
+
+  /**
+   * Обработать удаление сотрудника из таблицы
+   */
+  onClickDelete(id: number) {
+    console.log(id)
+    this.appService.deletePersonInfo(id)
   }
 }

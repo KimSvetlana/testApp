@@ -19,7 +19,7 @@ import { AppService } from 'src/app/services/app.service';
   styleUrls: ['./add-person-card.component.scss']
 })
 export class AddPersonCardComponent{
-  @Output() onChanged = new EventEmitter<Person>();
+  @Output() personAdded = new EventEmitter<Person>();
   display = false;
   person: Person;
 
@@ -28,7 +28,7 @@ export class AddPersonCardComponent{
   /**
    * Обработать клик по карточке добавления сотрудника
    */
-  onClick(): void{
+  onClickAdd(): void{
     this.display = true;
   }
 
@@ -40,15 +40,15 @@ export class AddPersonCardComponent{
   }
 
   /**
-   * Добавить пользователя, отправить форму на сервер
+   * Добавить сотрудника, отправить форму на сервер
    */
   onSubmit(event: any): void {
     const obj = {
       firstName: event.target.firstName.value,
       lastName: event.target.lastName.value,
     };
-    this.appService.postPersonInfo(obj).subscribe((personInfo: Person ) => {
-      this.onChanged.emit(personInfo);
+    this.appService.postPersonInfo(obj).subscribe((person: Person ) => {
+      this.personAdded.emit(person);
     });
 
     this.display = false;

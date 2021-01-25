@@ -34,7 +34,15 @@ export class AppService {
   /**
    * Обновление информации о сотруднике
    */
-  putPersonInfo(id: number, obj: Person): Observable<Person> {
-    return  this.apiService.put<Person>(`person/${id}`, obj);
+  putPersonInfo(id: number, obj:object): Observable<Person> {
+    console.log("request is " + `person/${id}` + " " + obj);
+    return  this.apiService.put<Person>(`person/${id}/`, obj);
+  }
+
+  /**
+   * Удаление информации о сотруднике
+   */
+  deletePersonInfo(id: number): Observable<Person> {
+    return  this.apiService.delete<Person>(`person/${id}`);
   }
 }
