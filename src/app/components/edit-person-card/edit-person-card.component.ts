@@ -7,14 +7,16 @@ import { AppService } from 'src/app/services/app.service';
   template: `
   <div class = "card-shadow" [style.display]="visibility?'block':'none'"></div>
     <div class = 'card' [style.display]="visibility?'block':'none'">
-      <h3>Редактирование сотрудника</h3>
-      <a href="#" (click)="onClick()"> Назад к списку</a>
-    <form (ngSubmit)="onSubmit($event)">
-      <input type = 'text' name = 'firstName' [(ngModel)]="firstName" value = {{this.person?.firstName}}>
-      <input  type = 'text' name = 'lastName' [(ngModel)]="lastName" value = {{this.person?.lastName}}>
-      <button value="Сохранить"  type='submit'>Сохранить</button>
-    </form>
-    </div>`,
+      <div class='card-header'><h3>Редактирование сотрудника</h3></div>
+      <div class='card-body'>
+        <a href="#" (click)="onClick()"> Назад к списку</a>
+        <form (ngSubmit)="onSubmit($event)">
+          <input type = 'text' name = 'firstName' [(ngModel)]="firstName" value = {{this.person?.firstName}}>
+          <input  type = 'text' name = 'lastName' [(ngModel)]="lastName" value = {{this.person?.lastName}}>
+          <button value="Сохранить"  type='submit'>Сохранить</button>
+        </form>
+    </div>
+  </div>`,
   styleUrls: ['./edit-person-card.component.scss']
 })
 export class EditPersonCardComponent implements OnInit {

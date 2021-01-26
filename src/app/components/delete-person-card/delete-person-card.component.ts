@@ -26,7 +26,7 @@ export class DeletePersonCardComponent implements OnInit {
   /**
    * Обработать удаление сотрудника из таблицы
    */
-  onClickDelete():void {
+  onClickDelete(): void {
     this.showing = true;
   }
 

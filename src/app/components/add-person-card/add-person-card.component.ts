@@ -7,13 +7,15 @@ import { AppService } from 'src/app/services/app.service';
   template: `
 <div class = "card-shadow" [style.display]="display?'block':'none'"></div>
 <div class = 'card' [style.display]="display?'block':'none'">
-  <h3>Создание сотрудника</h3>
-  <a href = '#' (click)="onMouseClick()">Назад к списку</a>
-<form (ngSubmit)="onSubmit($event)">
-  <input type = 'text' name = 'firstName' placeholder ='Введите имя сотрудника'>
-  <input  type = 'text' name = 'lastName' placeholder ='Введите фамилию сотрудника'>
-  <button value="Сохранить"  type= 'submit'>Сохранить</button>
-</form>
+  <div class='card-header'><h3>Создание сотрудника</h3></div>
+  <div class='card-body'>
+    <a href = '#' (click)="onMouseClick()">Назад к списку</a>
+    <form (ngSubmit)="onSubmit($event)">
+      <input type = 'text' name = 'firstName' placeholder ='Введите имя сотрудника'>
+      <input  type = 'text' name = 'lastName' placeholder ='Введите фамилию сотрудника'>
+      <button value="Сохранить"  type='submit'>Сохранить</button>
+    </form>
+  </div>
 </div>
   ` ,
   styleUrls: ['./add-person-card.component.scss']

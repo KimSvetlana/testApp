@@ -20,10 +20,8 @@ import { AppService } from 'src/app/services/app.service';
           <td>{{person.firstName}}</td>
           <td>{{person.lastName}}</td>
           <td>
-            <div>
-              <mat-icon (click)="visibility.onClickEdit()" class="icon-button">create</mat-icon>
-              <mat-icon  class="icon-button" (click)="showing.onClickDelete()" >clear</mat-icon>
-            </div>
+            <div class='icon-wrapper'><mat-icon  class="icon-button" (click)="showing.onClickDelete()" >clear</mat-icon></div>
+            <div class='icon-wrapper'><mat-icon (click)="visibility.onClickEdit()" class="icon-button">create</mat-icon></div>
           </td>
           <app-edit-person-card #visibility [id] = "person.id"
           (personChanged)="onPersonChanged($event)"></app-edit-person-card>
