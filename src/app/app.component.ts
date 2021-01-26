@@ -1,12 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Person } from './interfaces/person';
-import { AppService } from './services/app.service';
-
+import { Component} from '@angular/core';
 @Component({
   selector: 'app-root',
-  template: `
-    <router-outlet></router-outlet>
-  `,
+  template: `<router-outlet></router-outlet>`,
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {

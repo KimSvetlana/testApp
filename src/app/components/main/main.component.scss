@@ -8,14 +8,13 @@
 table{
     border-collapse: collapse;
 }
-tr.head{
+thead{
     background-color: #f3efef;
     border-top: 1px solid rgb(172, 171, 171);
+    border-bottom: 1px solid rgb(172, 171, 171);
     font-weight: 500;
-    height: 30px;
 }
 tr {
-    height: 30px;
     border-bottom: 1px solid rgb(172, 171, 171);
 }
 button{

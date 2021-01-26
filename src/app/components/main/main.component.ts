@@ -7,34 +7,38 @@ import { AppService } from 'src/app/services/app.service';
   template: `
   <div class = 'wrapper'>
     <table>
-        <tr class = 'head'>
-          <td></td>
-          <td>Имя</td>
-          <td>Фамилия</td>
-          <td></td>
-        </tr>
-
+      <thead class = 'head'>
+        <td></td>
+        <td>Имя</td>
+        <td>Фамилия</td>
+        <td></td>
+      </thead>
       <tbody>
         <tr *ngFor="let person of persons" class='' id = {{person.id}}>
           <td><mat-icon>account_circle</mat-icon></td>
           <td>{{person.firstName}}</td>
           <td>{{person.lastName}}</td>
           <td>
-            <div class='icon-wrapper'><mat-icon  class="icon-button" (click)="showing.onClickDelete()" >clear</mat-icon></div>
-            <div class='icon-wrapper'><mat-icon (click)="visibility.onClickEdit()" class="icon-button">create</mat-icon></div>
+            <div class='icon-wrapper'>
+              <mat-icon class="icon-button" (click)="showing.onClickDelete()">clear</mat-icon>
+            </div>
+            <div class='icon-wrapper'>
+              <mat-icon class="icon-button" (click)="visibility.onClickEdit()">create</mat-icon>
+            </div>
           </td>
-          <app-edit-person-card #visibility [id] = "person.id"
-          (personChanged)="onPersonChanged($event)"></app-edit-person-card>
-          <app-delete-person-card  #showing [id] = "person.id" (personDeleted)="onPersonDeleted($event)"></app-delete-person-card>
+          <app-edit-person-card #visibility [id] = "person.id" (personChanged)="onPersonChanged($event)">
+          </app-edit-person-card>
+          <app-delete-person-card  #showing [id] = "person.id" (personDeleted)="onPersonDeleted($event)">
+          </app-delete-person-card>
         </tr>
       </tbody>
     </table>
     <button class='button' (click)="display.onClickAdd()"> Добавить сотрудника</button>
     <app-add-person-card  #display (personAdded)="onPersonAdded($event)"></app-add-person-card>
-</div>
-  `,
+  </div>`,
   styleUrls: ['./main.component.scss']
 })
+
 export class MainComponent implements OnInit {
   persons: Person[] = [];
 

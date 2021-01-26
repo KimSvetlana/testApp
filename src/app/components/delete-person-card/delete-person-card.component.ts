@@ -4,16 +4,15 @@ import { AppService } from 'src/app/services/app.service';
 @Component({
   selector: 'app-delete-person-card',
   template: `
-    <div class = "card-shadow" [style.display]="showing?'block':'none'"></div>
-    <div class = 'card' [style.display]="showing?'block':'none'">
-     <p> Вы уверены, что хотите удалить информацию о сотруднике?</p>
-     <button value="OK" (click)="onSubmit(this.id)">OK</button>
-     <button value="NO" (click)="onClickNo()">NO</button>
-
-    </div>
-`,
+  <div class = "card-shadow" [style.display]="showing?'block':'none'"></div>
+  <div class = 'card' [style.display]="showing?'block':'none'">
+    <p> Вы уверены, что хотите удалить информацию о сотруднике?</p>
+    <button value="OK" (click)="onSubmit(this.id)">OK</button>
+    <button value="NO" (click)="onClickNo()">NO</button>
+  </div>`,
   styleUrls: ['./delete-person-card.component.scss']
 })
+
 export class DeletePersonCardComponent implements OnInit {
   @Output() personDeleted = new EventEmitter<any>();
   @Input() id: number;

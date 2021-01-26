@@ -19,6 +19,7 @@ import { AppService } from 'src/app/services/app.service';
   </div>`,
   styleUrls: ['./edit-person-card.component.scss']
 })
+
 export class EditPersonCardComponent implements OnInit {
   @Output() personChanged = new EventEmitter<Person>();
   @Input() id: number;
@@ -67,7 +68,6 @@ export class EditPersonCardComponent implements OnInit {
     this.appService.putPersonInfo(this.id, obj).subscribe((person: Person ) => {
       this.personChanged.emit(person);
     });
-
     this.visibility = false;
   }
 }

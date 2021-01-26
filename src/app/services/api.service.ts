@@ -76,6 +76,9 @@ export class ApiService {
     }));
   }
 
+  /**
+   * Вывод сообщения об ошибки
+   */
   private formatErrors(error: Error): void {
     this.snackbar.open(`Произошла ошибка ${error.name}. Описание: ${error.message}.`, 'Закрыть', {
       duration: 7000,
