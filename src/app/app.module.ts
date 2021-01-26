@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DeletePersonCardComponent } from './components/delete-person-card/delete-person-card.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { DeletePersonCardComponent } from './components/delete-person-card/delet
     MatIconModule,
     HttpClientModule,
     FormsModule,
+    MatSnackBarModule,
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

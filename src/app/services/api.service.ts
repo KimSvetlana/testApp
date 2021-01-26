@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 /**
  * Вспомогательный сервис для выполнения запросов к api
@@ -12,7 +13,8 @@ import { catchError } from 'rxjs/operators';
 })
 export class ApiService {
   constructor(
-    private http: HttpClient) { }
+    private http: HttpClient,
+    private snackbar: MatSnackBar) { }
 
   /**
    * Выполнить get запрос
@@ -75,5 +77,8 @@ export class ApiService {
   }
 
   private formatErrors(error: Error): void {
+    this.snackbar.open(`Произошла ошибка ${error.name}. Описание: ${error.message}.`, 'Закрыть', {
+      duration: 7000,
+    });
   }
 }
