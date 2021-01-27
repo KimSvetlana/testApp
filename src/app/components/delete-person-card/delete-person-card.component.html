@@ -1,1 +1,6 @@
-<p>delete-person-card works!</p>
+<div class="card-shadow" [style.display]="display?'block':'none'"></div>
+<div class='card' [style.display]="display?'block':'none'">
+    <p> Вы уверены, что хотите удалить информацию о сотруднике?</p>
+    <button value="OK" (click)="onClickOk(this.id)">OK</button>
+    <button value="NO" (click)="onClickNo()">NO</button>
+</div>

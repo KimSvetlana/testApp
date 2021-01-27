@@ -3,13 +3,7 @@ import { AppService } from 'src/app/services/appService/app.service';
 
 @Component({
   selector: 'app-delete-person-card',
-  template: `
-  <div class = "card-shadow" [style.display]="display?'block':'none'"></div>
-  <div class = 'card' [style.display]="display?'block':'none'">
-    <p> Вы уверены, что хотите удалить информацию о сотруднике?</p>
-    <button value="OK" (click)="onClickOk(this.id)">OK</button>
-    <button value="NO" (click)="onClickNo()">NO</button>
-  </div>`,
+  templateUrl: './delete-person-card.component.html',
   styleUrls: ['./delete-person-card.component.scss']
 })
 
@@ -21,7 +15,7 @@ export class DeletePersonCardComponent {
   constructor(private appService: AppService) { }
 
   /**
-   * Обработать удаление сотрудника из таблицы
+   * Отобразить карточку удаления сотрудника из таблицы
    */
   show(): void {
     this.display = true;
