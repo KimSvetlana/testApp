@@ -3,7 +3,7 @@ import { Person } from 'src/app/interfaces/person';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
-  selector: 'app-main',
+  selector: 'app-table',
   template: `
   <div class = 'wrapper'>
     <table>
@@ -20,32 +20,32 @@ import { AppService } from 'src/app/services/app.service';
           <td>{{person.lastName}}</td>
           <td>
             <div class='icon-wrapper'>
-              <mat-icon class="icon-button" (click)="showing.onClickDelete()">clear</mat-icon>
+              <mat-icon class="icon-button" (click)="deleteCard.show()">clear</mat-icon>
             </div>
             <div class='icon-wrapper'>
-              <mat-icon class="icon-button" (click)="visibility.onClickEdit()">create</mat-icon>
+              <mat-icon class="icon-button" (click)="editCard.show()">create</mat-icon>
             </div>
           </td>
-          <app-edit-person-card #visibility [id] = "person.id" (personChanged)="onPersonChanged($event)">
-          </app-edit-person-card>
-          <app-delete-person-card  #showing [id] = "person.id" (personDeleted)="onPersonDeleted($event)">
+          <app-edit-card #editCard [id] = "person.id" (personChanged)="onPersonChanged($event)">
+          </app-edit-card>
+          <app-delete-person-card  #deleteCard [id] = "person.id" (personDeleted)="onPersonDeleted($event)">
           </app-delete-person-card>
         </tr>
       </tbody>
     </table>
-    <button class='button' (click)="display.onClickAdd()"> Добавить сотрудника</button>
-    <app-add-person-card  #display (personAdded)="onPersonAdded($event)"></app-add-person-card>
+    <button class='button' (click)="addCard.show()"> Добавить сотрудника</button>
+    <app-add-card  #addCard (personAdded)="onPersonAdded($event)"></app-add-card>
   </div>`,
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./table.component.scss']
 })
 
-export class MainComponent implements OnInit {
+export class TableComponent implements OnInit {
   persons: Person[] = [];
 
-  constructor(private appService: AppService){}
+  constructor(private appService: AppService) { }
 
   ngOnInit(): void {
-    this.appService.getPersonArr().subscribe((personsArr: Person[] ) => {
+    this.appService.getPersonArr().subscribe((personsArr: Person[]) => {
       this.persons = personsArr;
     });
   }
@@ -53,16 +53,16 @@ export class MainComponent implements OnInit {
   /**
    * Обработать добавление в таблицу
    */
-  onPersonAdded(person: Person): void{
+  onPersonAdded(person: Person): void {
     this.persons.push(person);
   }
 
   /**
    * Обработать изменение информации о сотруднике в таблице
    */
-  onPersonChanged(person: Person): void{
+  onPersonChanged(person: Person): void {
     this.persons.find(el => {
-      if (el.id === person.id){
+      if (el.id === person.id) {
         el.firstName = person.firstName;
         el.lastName = person.lastName;
       }
@@ -72,7 +72,7 @@ export class MainComponent implements OnInit {
   /**
    * Обработать удаление информации о сотруднике в таблице
    */
-  onPersonDeleted(id: number): void{
+  onPersonDeleted(id: number): void {
     let i: number;
     this.persons.find(el => {
       if (el.id === id) {
