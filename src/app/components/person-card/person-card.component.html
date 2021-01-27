@@ -1,0 +1,14 @@
+<div class="card-shadow" [style.display]="display?'block':'none'"></div>
+<div class='card' [style.display]="display?'block':'none'">
+    <div class='card-header'>
+        <h3>{{header}}</h3>
+    </div>
+    <div class='card-body'>
+        <a href='#' (click)="close()">Назад к списку</a>
+        <form (ngSubmit)="onSubmit($event)">
+            <input type='text' name='firstName' placeholder='Введите имя сотрудника' value={{this.person?.firstName}}>
+            <input type='text' name='lastName' placeholder='Введите фамилию сотрудника' value={{this.person?.lastName}}>
+            <button value="Сохранить" type='submit'>Сохранить</button>
+        </form>
+    </div>
+</div>
