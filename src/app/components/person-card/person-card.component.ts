@@ -13,7 +13,7 @@ export abstract class PersonCardComponent{
   constructor() {}
 
   /**
-   * Обработать клик по карточке добавления сотрудника
+   * Показать карточку добавления/редактирования сотрудника
    */
   show(): void{
     this.display = true;
@@ -27,7 +27,7 @@ export abstract class PersonCardComponent{
   }
 
   /**
-   * Добавить сотрудника, отправить форму на сервер
+   * Добавить/отредактировать сотрудника, отправить форму на сервер
    */
  abstract onSubmit(event: any): void;
 
