@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Person } from 'src/app/interfaces/person';
-import { AppService } from 'src/app/services/app.service';
+import { AppService } from 'src/app/services/appService/app.service';
 import { PersonCardComponent } from './person-card.component';
 
 @Component({
@@ -14,7 +14,7 @@ export class EditPersonComponent extends PersonCardComponent implements OnInit {
 
   constructor(private appService: AppService) {
     super();
-    this.header = "Редактирование сотрудника";
+    this.header = 'Редактирование сотрудника';
   }
 
   ngOnInit(): void {

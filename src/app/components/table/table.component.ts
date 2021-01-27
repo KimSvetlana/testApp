@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from 'src/app/interfaces/person';
-import { AppService } from 'src/app/services/app.service';
+import { AppService } from 'src/app/services/appService/app.service';
 
 @Component({
   selector: 'app-table',

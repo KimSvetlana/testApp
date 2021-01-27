@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AppService } from 'src/app/services/app.service';
+import { AppService } from 'src/app/services/appService/app.service';
 
 @Component({
   selector: 'app-delete-person-card',
