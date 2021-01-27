@@ -4,38 +4,7 @@ import { AppService } from 'src/app/services/appService/app.service';
 
 @Component({
   selector: 'app-table',
-  template: `
-  <div class = 'wrapper'>
-    <table>
-      <thead class = 'head'>
-        <td></td>
-        <td>Имя</td>
-        <td>Фамилия</td>
-        <td></td>
-      </thead>
-      <tbody>
-        <tr *ngFor="let person of persons" class='' id = {{person.id}}>
-          <td><mat-icon>account_circle</mat-icon></td>
-          <td>{{person.firstName}}</td>
-          <td>{{person.lastName}}</td>
-          <td>
-            <div class='icon-wrapper'>
-              <mat-icon class="icon-button" (click)="deleteCard.show()">clear</mat-icon>
-            </div>
-            <div class='icon-wrapper'>
-              <mat-icon class="icon-button" (click)="editCard.show()">create</mat-icon>
-            </div>
-          </td>
-          <app-edit-card #editCard [id] = "person.id" (personChanged)="onPersonChanged($event)">
-          </app-edit-card>
-          <app-delete-person-card  #deleteCard [id] = "person.id" (personDeleted)="onPersonDeleted($event)">
-          </app-delete-person-card>
-        </tr>
-      </tbody>
-    </table>
-    <button class='button' (click)="addCard.show()"> Добавить сотрудника</button>
-    <app-add-card  #addCard (personAdded)="onPersonAdded($event)"></app-add-card>
-  </div>`,
+  templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
 
