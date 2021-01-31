@@ -32,7 +32,7 @@ export class ResponseInterceptor implements HttpInterceptor {
             if (event.status === 200 || event.status === 201) {
               this.snackbar.open(`Успешное выполнение запроса`, 'Закрыть', {
                 duration: 5000,
-              })
+              });
             }
           }
           return event;

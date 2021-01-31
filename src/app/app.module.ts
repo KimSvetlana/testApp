@@ -32,7 +32,7 @@ import { ResponseInterceptor } from './interceptor/response.interceptor';
     ReactiveFormsModule,
     MatSnackBarModule,
   ],
-  exports:[FormsModule],
+  exports: [FormsModule],
   providers: [
     HttpClientModule,
     {provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true}

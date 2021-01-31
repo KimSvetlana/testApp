@@ -2,7 +2,7 @@ import { Person } from 'src/app/interfaces/person';
 
 export abstract class PersonCardComponent {
   display = false;
-  person: Person | null
+  person: Person | null;
   header: string;
 
   /**
