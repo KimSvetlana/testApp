@@ -3,7 +3,6 @@ import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 /**
  * Вспомогательный сервис для выполнения запросов к api
@@ -12,9 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root'
 })
 export class ApiService {
-  constructor(
-    private http: HttpClient,
-    private snackbar: MatSnackBar) { }
+  constructor(private http: HttpClient) { }
 
   /**
    * Выполнить get запрос
@@ -24,7 +21,6 @@ export class ApiService {
   public get<T>(path: string, params: HttpParams = new HttpParams()): Observable<T> {
     return this.http.get<T>(`${environment.baseUrl}${path}`, { params })
       .pipe(catchError((err) => {
-        this.formatErrors(err);
         return throwError(err);
       }));
   }
@@ -39,9 +35,8 @@ export class ApiService {
     return this.http.put<T>(
       `${environment.baseUrl}${path}`,
       JSON.stringify(body),
-      {headers}
+      { headers }
     ).pipe(catchError((err) => {
-      this.formatErrors(err);
       return throwError(err);
     }));
   }
@@ -56,7 +51,6 @@ export class ApiService {
       `${environment.baseUrl}${path}`,
       body
     ).pipe(catchError((err) => {
-      this.formatErrors(err);
       return throwError(err);
     }));
   }
@@ -69,19 +63,10 @@ export class ApiService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     return this.http.delete<T>(
       `${environment.baseUrl}${path}`,
-      {headers}
+      { headers }
     ).pipe(catchError((err) => {
-      this.formatErrors(err);
       return throwError(err);
     }));
   }
 
-  /**
-   * Вывод сообщения об ошибки
-   */
-  private formatErrors(error: Error): void {
-    this.snackbar.open(`Произошла ошибка ${error.name}. Описание: ${error.message}.`, 'Закрыть', {
-      duration: 7000,
-    });
-  }
 }
