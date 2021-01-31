@@ -24,6 +24,10 @@
         width: 100%;
         margin: 10px 0;
     }
+    input:invalid{
+        border-color: red;
+    }
+    input:valid:not(:placeholder-shown) {border-color: green;}
 
     button {
         cursor: pointer;
@@ -36,6 +40,11 @@
         background-color: cornflowerblue;
         border: none;
         border-radius: 5px;
+
+        &:disabled{
+            cursor: not-allowed;
+            background-color: rgb(136, 176, 250);
+        }
 
         &:hover{
             background-color: rgb(136, 176, 250);

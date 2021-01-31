@@ -6,9 +6,30 @@
     <div class='card-body'>
         <a href='#' (click)="close()">Назад к списку</a>
         <form (ngSubmit)="onSubmit($event)">
-            <input type='text' name='firstName' placeholder='Введите имя сотрудника' value={{this.person?.firstName}}>
-            <input type='text' name='lastName' placeholder='Введите фамилию сотрудника' value={{this.person?.lastName}}>
-            <button value="Сохранить" type='submit'>Сохранить</button>
+            <input type='text' id='firstName' name='firstName' ngModel #firstName="ngModel" required
+                pattern="[A-Za-zА-Яа-яЁё]+" placeholder='Введите имя сотрудника' value={{this.person?.firstName}}>
+
+            <input type='text' id='lastName' name='lastName' ngModel #lastName="ngModel" required
+                pattern="[A-Za-zА-Яа-яЁё]+" placeholder='Введите фамилию сотрудника' value={{this.person?.lastName}}>
+            <button value="Сохранить" type='submit'
+                [disabled]="firstName.invalid || lastName.invalid">Сохранить</button>
+
+            <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                <div *ngIf="firstName.errors.required">
+                    Заполните поле имени
+                </div>
+                <div *ngIf="firstName.errors.pattern">
+                    Поле имени должно содержать только буквы
+                </div>
+            </div>
+            <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                <div *ngIf="lastName.errors.required">
+                    Заполните поле фамилии
+                </div>
+                <div *ngIf="lastName.errors.pattern">
+                    Поле фамилии должно содержать только буквы
+                </div>
+            </div>
         </form>
     </div>
 </div>

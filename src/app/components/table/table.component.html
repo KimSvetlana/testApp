@@ -18,7 +18,7 @@
                         <mat-icon class="icon-button" (click)="deleteCard.show()">clear</mat-icon>
                     </div>
                     <div class='icon-wrapper'>
-                        <mat-icon class="icon-button" (click)="editCard.show()">create</mat-icon>
+                        <mat-icon class="icon-button" (click)="editCard.show(person)">create</mat-icon>
                     </div>
                 </td>
                 <app-edit-card #editCard [id]="person.id" (personChanged)="onPersonChanged($event)">

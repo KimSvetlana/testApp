@@ -1,34 +1,28 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Person } from 'src/app/interfaces/person';
-@Component({
-  selector: 'app-person-card',
-  templateUrl: './person-card.component.html',
-  styleUrls: ['./person-card.component.scss']
-})
-export abstract class PersonCardComponent{
-  display = false;
-  person: Person;
-  header: string;
 
-  constructor() {}
+export abstract class PersonCardComponent {
+  display = false;
+  person: Person | null
+  header: string;
 
   /**
    * Показать карточку добавления/редактирования сотрудника
    */
-  show(): void{
+  show(person: Person = null): void {
+    this.person = person;
     this.display = true;
   }
 
   /**
    * Закрыть окно
    */
-  close(): void{
+  close(): void {
     this.display = false;
   }
 
   /**
    * Добавить/отредактировать сотрудника, отправить форму на сервер
    */
- abstract onSubmit(event: any): void;
+  abstract onSubmit(event: any): void;
 
 }

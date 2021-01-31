@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TableComponent } from './components/table/table.component';
 import { EditPersonComponent } from './components/person-card/edit-person.component';
@@ -19,7 +19,7 @@ import { DeletePersonCardComponent } from './components/delete-person-card/delet
     TableComponent,
     DeletePersonCardComponent,
     EditPersonComponent,
-    AddPersonComponent
+    AddPersonComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,8 +28,10 @@ import { DeletePersonCardComponent } from './components/delete-person-card/delet
     MatIconModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     MatSnackBarModule,
   ],
+  exports:[FormsModule],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
